@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Code Wars Fundamental 2</title>
+</head>
+<body>
+  <script>
+
+
+//Jaden Casing Strings (7 kyu)
+//https://www.codewars.com/kata/5390bac347d09b7da40006f6
+//Jaden Smith, the son of Will Smith, is the star of films such as The Karate Kid (2010) and After Earth (2013). Jaden is also known for some of his philosophy that he delivers via Twitter. When writing on Twitter, he is known for almost always capitalizing every word. For simplicity, you'll have to capitalize each word, check out how contractions are expected to be in the example below.
+//Your task is to convert strings to how they would be written by Jaden Smith. The strings are actual quotes from Jaden Smith, but they are not capitalized in the same way he originally typed them.
+//Example:
+// Not Jaden-Cased: "How can mirrors be real if our eyes aren't real"
+// Jaden-Cased:     "How Can Mirrors Be Real If Our Eyes Aren't Real"
+String.prototype.toJadenCase = function () {
+  let splited = this.split(" ")
+  let transformed = []
+  let done = ""
+  for(let i=0;i<splited.length;i++){
+    transformed[i] = (splited[i][0].toUpperCase()) + splited[i].substr(1,splited[i].length)
+  }
+  for(let i =0;i<transformed.length;i++){
+    if(i===0){
+      done += transformed[i]
+    }
+    else done += " " + transformed[i]
+  }
+  return done
+};
+
+
+// Love vs friendship (7 kyu)
+// https://www.codewars.com/kata/59706036f6e5d1e22d000016
+// If　a = 1, b = 2, c = 3 ... z = 26
+// Then l + o + v + e = 54
+// and f + r + i + e + n + d + s + h + i + p = 108
+// So friendship is twice stronger than love :-)
+// The input will always be in lowercase and never be empty.
+function wordsToMarks(stringsa){
+  let letters = {
+    a : 1,
+    b:2,
+    c:3,
+    d:4,
+    e:5,
+    f:6,
+    g:7,
+    h:8,
+    i:9,
+    j:10,
+    k:11,
+    l:12,
+    m:13,
+    n:14,
+    o:15,
+    p:16,
+    q:17,
+    r:18,
+    s:19,
+    t:20,
+    u:21,
+    v:22,
+    w:23,
+    x:24,
+    y:25,
+    z:26
+  }
+  let cont = 0
+  for(let i=0;i<stringsa.length;i++){
+    for(let key in letters){
+      if(stringsa[i] === key){
+        cont+=letters[key]
+      }
+    }
+  }
+  return cont
+}
+
+
+// Grasshopper - Grade book (8 kyu)
+// https://www.codewars.com/kata/55cbd4ba903825f7970000f5
+// Complete the function so that it finds the mean of the three scores passed to it and returns the letter value associated with that grade.
+// Numerical Score	Letter Grade
+// 90 <= score <= 100	'A'
+// 80 <= score < 90	'B'
+// 70 <= score < 80	'C'
+// 60 <= score < 70	'D'
+// 0 <= score < 60	'F'
+// Tested values are all between 0 and 100. Theres is no need to check for negative values or values greater than 100.
+function getGrade (s1, s2, s3) {
+  score = (s1+s2+s3)/3
+  if(score >= 90 && score <= 100) return "A"
+  if(score >= 80 && score < 90) return  'B'
+  if(score >= 70 && score < 80) return  'C'
+  if(score >= 60 && score < 70) return  'D'
+  if(score >= 0 && score < 60) return 'F'
+}
+
+
+// Quarter of the year (8 kyu)
+// https://www.codewars.com/kata/5ce9c1000bab0b001134f5af
+// Given a month as an integer from 1 to 12, return to which quarter of the year it belongs as an integer number.
+// For example: month 2 (February), is part of the first quarter; month 6 (June), is part of the second quarter; and month 11 (November), is part of the fourth quarter.
+const quarterOf = (month) => {
+  if(month<=3){
+    return 1
+  }
+  if(month<=6){
+    return 2
+  }
+  if(month<=9){
+    return 3
+  }
+  if(month<=12){
+    return 4
+  }
+}
+  </script>
+</body>
+</html>
